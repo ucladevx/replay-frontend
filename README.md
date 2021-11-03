@@ -18,3 +18,5 @@ The page will auto-reload when edits are made.
 
 Xcode will display an IOS simulator of our app.\
 This can also be done by selecting the `Run on IOS simulator` option on the Metro Bundler.
+
+#### To read more: https://reactnative.dev/docs/environment-setup
