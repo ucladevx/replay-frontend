@@ -25,7 +25,7 @@ export default function Home() {
           pinColor="blue"
           draggable={true}
           onDragStart={(e) => {
-            console.log("Drag start", e.nativeEvent.coordinates)
+            console.log("Drag start", e.nativeEvent.coordinate)
           }}
           onDragEnd={(e) => {
             setPin({
