@@ -17,7 +17,7 @@ export default function Login() {
 
                 <View style={styles.inputView}>
                     <TextInput
-                        style={styles.TextInput}
+                        style={styles.textInput}
                         placeholder="Username or Email"
                         placeholderTextColor="#003f5c"
                         onChangeText={(email) => setEmail(email)}
@@ -28,10 +28,10 @@ export default function Login() {
 
                 <View style={styles.inputView}>
                     <TextInput
-                        style={styles.TextInput}
+                        style={styles.textInput}
                         placeholder="Password"
                         placeholderTextColor="#003f5c"
-                        secureTextEntry={true}
+                        secureTextEntry
                         onChangeText={(password) => setPassword(password)}
                         ref={ref_input2}
                     />
@@ -69,15 +69,12 @@ const styles = StyleSheet.create({
         width: "70%",
         height: 45,
         marginBottom: 20,
-     
         alignItems: "center",
     },
 
-    TextInput: {
+    textInput: {
         height: 50,
         flex: 1,
-        padding: 10,
-        marginLeft: 20,
     },
 
     forgot_button: {
