@@ -9,8 +9,8 @@ export default function Home() {
     longitude: -118.4452
   })
 
-  const [ currentLongitude, setCurrentLongitude ] = useState();
-  const [ currentLatitude, setCurrentLatitude ] = useState();
+  const [ currentLongitude, setCurrentLongitude ] = useState(34.0689);
+  const [ currentLatitude, setCurrentLatitude ] = useState(118.4452);
 
   useEffect(() => {
     (async () => {
@@ -18,6 +18,8 @@ export default function Home() {
       if (location !== "INVALID") {
         console.log(location.coords.latitude)
         console.log(location.coords.longitude)
+        setCurrentLatitude(location.coords.latitude)
+        setCurrentLongitude(location.coords.longitude)
       }
     })();
   }, []);
@@ -92,17 +94,17 @@ export default function Home() {
     <View style={styles.container}>
       <MapView 
         style={styles.map} 
-        initialRegion={{
-          latitude: 34.0689,
-          longitude: -118.4452,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+        region={{
+          latitude: currentLatitude,
+          longitude: currentLongitude,
+          latitudeDelta: 0.003,
+          longitudeDelta: 0.003,
         }}
       >
         <Marker 
           coordinate= {{
-            latitude: 34.0689,
-            longitude: -118.4452}}
+            latitude: currentLatitude,
+            longitude: currentLongitude}}
           pinColor="blue"
           draggable={true}
           onDragStart={(e) => {
