@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import { Location } from '../helper/Location';
-import Geolocation from '@react-native-community/geolocation';
+import { getUserLocationData } from '../helpers/location';
 
 export default function Home() {
   const [pin, setPin] = useState ({
@@ -14,18 +13,17 @@ export default function Home() {
   const [ currentLatitude, setCurrentLatitude ] = useState();
 
   useEffect(() => {
-    const requestLocationPermission = async () => {
-      if (Platform.OS === 'ios') {
-        getOneTimeLocation();
-        subscribeLocationLocation();
+    (async () => {
+      let location = await getUserLocationData();
+      if (location !== "INVALID") {
+        console.log(location.coords.latitude)
+        console.log(location.coords.longitude)
       }
-    };
-    requestLocationPermission();
-    return () => {
-      Geolocation.clearWatch(watchID);
-    };
+    })();
   }, []);
 
+
+  /*
   const getOneTimeLocation = () => {
     setLocationStatus('Getting Location ...');
     Geolocation.getCurrentPosition(
@@ -88,7 +86,7 @@ export default function Home() {
         maximumAge: 1000
       },
     );
-  };
+  };*/
 
   return (
     <View style={styles.container}>
@@ -119,18 +117,6 @@ export default function Home() {
         >
           <Callout>
             <Text>I'm here</Text>
-          </Callout>
-        </Marker>
-        <Marker
-          coordinate= {{
-            latitude: {currentLatitude},
-            longitude: {currentLongitude}
-          }}
-          pinColor="red"
-          draggable={false}
-        >
-          <Callout>
-            <Text>Current location test!</Text>
           </Callout>
         </Marker>
       </MapView>
