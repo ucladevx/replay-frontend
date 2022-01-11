@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { getUserLocationData } from '../helpers/location';
+import UserMarker from '../components/UserMarker'
 
 export default function Home() {
   //UCLA location
@@ -55,6 +56,11 @@ export default function Home() {
             <Text>My Location</Text>
           </Callout>
         </Marker>
+        
+        <UserMarker 
+          latitude={currentLatitude+0.0005}
+          longitude={currentLongitude+0.0005}
+        />
       </MapView>
     </View>
   );
