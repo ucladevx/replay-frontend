@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { TouchableWithoutFeedback, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard } from 'react-native';
+import { TouchableWithoutFeedback, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, Image, Container, Content} from 'react-native';
 import * as Font from "expo-font";
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
+
 
 
 const fetchFonts = async () => {
@@ -15,12 +16,16 @@ const fetchFonts = async () => {
       });
 }; 
  
+//const staticImage = require("../assets/walkman.png");
+
 
 
 export default function Signup() {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmpassword, setConfirmPassword] = useState('');
+    const [dob, setDob] = useState('');
     const ref_input2 = useRef();    //what does this do?
 
     
@@ -35,14 +40,24 @@ export default function Signup() {
         );
       }
 
-        return (
-            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      
+        return (        //style={{flex: 1, width: '100%', height: '100%', resizeMode: 'cover'}}
+           
+                <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                 <View style={styles.container}>
                     <StatusBar style='auto' />
+                    <Text style={styles.back}>
+                        &lt;- Back 
+                    </Text>
+                    <Image source={require("../assets/walkman.png")} style={{flex: 1, width: '100%', height: '85%', resizeMode: 'cover', position: 'absolute'}}/>
+
+
                     <Text style={styles.header}>
                         Sign Up
                     </Text>
     
+                    
+
                     <View style={styles.inputView}>
                         <TextInput
                             style={styles.textInput}
@@ -66,27 +81,53 @@ export default function Signup() {
                             onSubmitEditing={() => ref_input2.current.focus()}      //what does this do?
                         />
                     </View>
+
+                    <View>
+                        <Text style={styles.warning}>*may be shown publicly</Text>
+                    </View>
+                    
     
                     <View style={styles.inputView}>
                         <TextInput
                             style={styles.textInput}
-                            placeholder="Password"
+                            placeholder="Create Password"
                             placeholderTextColor="#000000"
                             secureTextEntry
                             onChangeText={(password) => setPassword(password)}
                             ref={ref_input2}
                         />
                     </View>
-    
-                    <TouchableOpacity>
-                        <Text style={styles.forgot_button}>Forgot Password?</Text>
-                    </TouchableOpacity>
+
+
+                    <View style={styles.inputView}>
+                        <TextInput
+                            style={styles.textInput}
+                            placeholder="Confirm Password"
+                            placeholderTextColor="#000000"
+                            secureTextEntry
+                            onChangeText={(confirmpassword) => setConfirmPassword(confirmpassword)}
+                            //ref={ref_input2}     what does this do
+                        />
+                    </View>
+
+                    <View style={styles.inputView}>
+                        <TextInput
+                            style={styles.textInput}
+                            placeholder="MM/DD/YYYY"
+                            placeholderTextColor="#000000"
+                            secureTextEntry
+                            onChangeText={(dob) => setDob(dob)}
+                            //ref={ref_input2}              what does this do
+                        />
+                    </View>
+
     
                     <TouchableOpacity style={styles.login_button}>
                         <Text style={styles.loginText}>Next</Text>
                     </TouchableOpacity>
                 </View>
             </TouchableWithoutFeedback>
+        
         );
     
 }
@@ -97,6 +138,24 @@ const styles = StyleSheet.create({
         backgroundColor: '#EE9B00',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+
+    back: { //probably need to change the location of the back to work for all screens?
+        alignItems: 'stretch',
+        justifyContent: 'center',
+            fontFamily: 'GochiHand',
+            position: 'absolute',
+            width: 95,
+            height: 20,
+            left: 20,
+            top: 50,
+            fontSize: 24
+    },
+
+    warning: {
+        fontFamily: 'ShareTechMono', 
+        color: '#9B2226',
+        textAlign: "left",
     },
 
     header: {
@@ -116,6 +175,10 @@ const styles = StyleSheet.create({
         borderWidth: 1, 
         flexDirection:'row',
         paddingLeft: 10,
+        shadowColor: '#000000',
+        shadowOffset: {width: 0, height: 4},
+        shadowOpacity: 0.5,
+        shadowRadius: 4,
     },
 
     textInput: {
@@ -148,6 +211,11 @@ const styles = StyleSheet.create({
         marginTop: 40,
         backgroundColor: "#A5A6F6",
         borderWidth: 3,
+        shadowColor: '#000000',
+        shadowOffset: {width: 0, height: 4},
+        shadowOpacity: 0.5,
+        shadowRadius: 4,
+
     },
 
 
