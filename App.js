@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import Home from './screens/Home';
 import Login from './screens/Login';
 import Signup from './screens/Signup'; 
+import Landing from './screens/Landing';
 
 export default function App() {
   return (

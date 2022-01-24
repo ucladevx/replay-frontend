@@ -42,89 +42,89 @@ export default function Signup() {
 
       
         return (        //style={{flex: 1, width: '100%', height: '100%', resizeMode: 'cover'}}
-           
-                <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                 <View style={styles.container}>
                     <StatusBar style='auto' />
                     <Text style={styles.back}>
-                        &lt;- Back 
+                        &lt;- Back
                     </Text>
-                    <Image source={require("../assets/walkman.png")} style={{flex: 1, width: '100%', height: '85%', resizeMode: 'cover', position: 'absolute'}}/>
+                    <Image source={require("../assets/walkman.png")} style={styles.image}/>
+
+                    <View style = {styles.mainscreen}>
+                        <Text style={styles.header}>Sign Up</Text>
+
+                        <View style={styles.inputView}>
+                           <TextInput
+                               style={styles.textInput}
+                               placeholder="Email"
+                               placeholderTextColor="#000000"
+                               onChangeText={(email) => setEmail(email)}
+                               secureTextEntry={false}
+                               onSubmitEditing={() => ref_input2.current.focus()}      //what does this do?
+                           />
+                       </View>
+
+                       <View style={styles.inputView}>
+                           <TextInput
+                               style={styles.textInput}
+                               placeholder="Username"
+                               placeholderTextColor="#000000"
+                               onChangeText={(username) => setUsername(username)}
+                               secureTextEntry={false}
+                               onSubmitEditing={() => ref_input2.current.focus()}      //what does this do?
+                           />
+                       </View>
+
+                       <View>
+                           <Text style={styles.warning}>*may be shown publicly</Text>
+                       </View>
 
 
-                    <Text style={styles.header}>
-                        Sign Up
-                    </Text>
-    
-                    
+                       <View style={styles.inputView}>
+                           <TextInput
+                               style={styles.textInput}
+                               placeholder="Create Password"
+                               placeholderTextColor="#000000"
+                               secureTextEntry
+                               onChangeText={(password) => setPassword(password)}
+                               ref={ref_input2}
+                           />
+                       </View>
 
-                    <View style={styles.inputView}>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder="Email"
-                            placeholderTextColor="#000000"
-                            onChangeText={(email) => setEmail(email)}
-                            secureTextEntry={false}
-                            onSubmitEditing={() => ref_input2.current.focus()}      //what does this do?
-                        />
+
+
+                       <View style={styles.inputView}>
+                           <TextInput
+                               style={styles.textInput}
+                               placeholder="Confirm Password"
+                               placeholderTextColor="#000000"
+                               secureTextEntry
+                               onChangeText={(confirmpassword) => setConfirmPassword(confirmpassword)}
+                               //ref={ref_input2}     what does this do
+                           />
+                       </View>
+
+
+                       <View style={styles.inputView}>
+                           <TextInput
+                               style={styles.textInput}
+                               placeholder="MM/DD/YYYY"
+                               placeholderTextColor="#000000"
+                               secureTextEntry
+                               onChangeText={(dob) => setDob(dob)}
+                               //ref={ref_input2}              what does this do
+                           />
+                       </View>
+
+                       <TouchableOpacity style={styles.login_button}>
+                            <Text style={styles.loginText}>Next</Text>
+                        </TouchableOpacity>
+
+
+
                     </View>
-                  
-
-                    
-                    <View style={styles.inputView}>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder="Username"
-                            placeholderTextColor="#000000"
-                            onChangeText={(username) => setUsername(username)}
-                            secureTextEntry={false}
-                            onSubmitEditing={() => ref_input2.current.focus()}      //what does this do?
-                        />
-                    </View>
-
-                    <View>
-                        <Text style={styles.warning}>*may be shown publicly</Text>
-                    </View>
-                    
-    
-                    <View style={styles.inputView}>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder="Create Password"
-                            placeholderTextColor="#000000"
-                            secureTextEntry
-                            onChangeText={(password) => setPassword(password)}
-                            ref={ref_input2}
-                        />
-                    </View>
-
-
-                    <View style={styles.inputView}>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder="Confirm Password"
-                            placeholderTextColor="#000000"
-                            secureTextEntry
-                            onChangeText={(confirmpassword) => setConfirmPassword(confirmpassword)}
-                            //ref={ref_input2}     what does this do
-                        />
-                    </View>
-
-                    <View style={styles.inputView}>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder="MM/DD/YYYY"
-                            placeholderTextColor="#000000"
-                            secureTextEntry
-                            onChangeText={(dob) => setDob(dob)}
-                            //ref={ref_input2}              what does this do
-                        />
-                    </View>
-
-    
-                    <TouchableOpacity style={styles.login_button}>
-                        <Text style={styles.loginText}>Next</Text>
-                    </TouchableOpacity>
+               
+            
                 </View>
             </TouchableWithoutFeedback>
         
@@ -138,6 +138,23 @@ const styles = StyleSheet.create({
         backgroundColor: '#EE9B00',
         alignItems: 'center',
         justifyContent: 'center',
+        //marginTop: 
+    },
+
+    mainscreen: {
+        alignItems: 'center',
+    },
+
+    image: {
+        flex: 1, 
+        width: '85%', 
+        height: '60%', 
+        resizeMode: 'cover', 
+        position: 'absolute',
+        top: 10,
+        right: 20,
+
+
     },
 
     back: { //probably need to change the location of the back to work for all screens?
@@ -222,7 +239,7 @@ const styles = StyleSheet.create({
     loginText: {
         fontFamily: 'ShareTechMono', 
         fontSize: 24,
-        fontWeight: "bold",
+        fontWeight: "bold", //figure out how to make bold
     },
 
 
