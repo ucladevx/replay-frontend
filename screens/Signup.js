@@ -75,7 +75,7 @@ export default function Signup() {
                            />
                        </View>
 
-                       <View>
+                       <View style = {{marginBottom: 10}}>
                            <Text style={styles.warning}>*may be shown publicly</Text>
                        </View>
 
@@ -143,6 +143,7 @@ const styles = StyleSheet.create({
 
     mainscreen: {
         alignItems: 'center',
+        marginTop: 40,
     },
 
     image: {
@@ -172,7 +173,12 @@ const styles = StyleSheet.create({
     warning: {
         fontFamily: 'ShareTechMono', 
         color: '#9B2226',
-        textAlign: "left",
+        //textAlign: "left",
+        position: 'absolute',
+        right: -20,
+        bottom: -5,
+        //left: 90,
+        
     },
 
     header: {
