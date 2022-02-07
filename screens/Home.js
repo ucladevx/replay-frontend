@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { getUserLocationData } from '../helpers/location';
+import * as Location from 'expo-location';
 
 export default function Home() {
   const [pin, setPin] = useState ({
@@ -14,13 +15,33 @@ export default function Home() {
 
   useEffect(() => {
     (async () => {
-      let location = await getUserLocationData();
-      if (location !== "INVALID") {
-        console.log(location.coords.latitude)
-        console.log(location.coords.longitude)
-        setCurrentLatitude(location.coords.latitude)
-        setCurrentLongitude(location.coords.longitude)
+      // let location = await getUserLocationData();
+      // if (location !== "INVALID") {
+      //   console.log(location.coords.latitude)
+      //   console.log(location.coords.longitude)
+      //   setCurrentLatitude(location.coords.latitude)
+      //   setCurrentLongitude(location.coords.longitude)
+      // }
+      //check if user has granted location permissions
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        alert('Location permission denied! Allow location permissions in settings.')
+        return "INVALID";
       }
+
+      //fetch location data
+      //let location = await Location.getCurrentPositionAsync({});
+      let location = await Location.watchPositionAsync({
+        accuracy:Location.Accuracy.High,
+        timeInterval:10000,
+        distanceInterval: 80,
+      },
+      location => {
+        console.log('update location!', location.coords.latitude, location.coords.longitude)
+        setCurrentLatitude(location.coords.latitude)
+        setCurrentLongitude(location.coords.longitude);
+      }
+      )
     })();
   }, []);
 
