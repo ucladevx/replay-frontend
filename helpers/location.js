@@ -1,6 +1,6 @@
-import * as Location from 'expo-location';
+import * as Location from 'expo-location'; 
 
-/////////////////////////////////////
+///////////////////////////////////////////////////////
 // Grab user's current location data
 // If permission granted, returns 
 // Object {
@@ -15,12 +15,14 @@ import * as Location from 'expo-location';
 //   },
 //   "timestamp",
 // }
-//////////////////////////////////////
+// More info: 
+//  https://docs.expo.dev/versions/latest/sdk/location/
+///////////////////////////////////////////////////////
 const getUserLocationData = async () => {
   //check if user has granted location permissions
   let { status } = await Location.requestForegroundPermissionsAsync();
   if (status !== 'granted') {
-    alert('Location permission denied! Allow location permissions in settings.')
+    alert('Unable to update user location! Allow location permissions in settings.')
     return "INVALID";
   }
 
