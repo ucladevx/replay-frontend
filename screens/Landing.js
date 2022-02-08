@@ -38,10 +38,10 @@ export default function Landing() {
                 <StatusBar style='auto' />
                 
                 <View styles = {styles.uppercontainer}>
-                    <View styles= {styles.fontcontainer}>
                         <Text style={styles.header1}>
                             Replay
                         </Text>
+                        
                         <Text style={styles.header2}>
                             Replay
                         </Text>
@@ -51,10 +51,9 @@ export default function Landing() {
                         <Text style={styles.header4}>
                             Replay
                         </Text>
-                    </View>
-                   
+                    
 
-                    <Text style = {styles.slogan}>--slogan--</Text>
+                    <Text style = {styles.slogan}>--slogan--</Text> 
                 </View>
                 
 
@@ -84,78 +83,87 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#9B2226',
         alignItems: 'center',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-       // justifyContent: 'center',
+        //flexDirection: 'column',
+        //justifyContent: 'space-around',
+        justifyContent: 'center',
+        
+    },
+    uppercontainer: {
+        alignItems: 'center',
+        //position: 'absolute',
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'white',
+        position: 'absolute',
+        top: 10,
         
     },
 
-    fontcontainer: {
-        alignItems: 'center',
-        marginTop: 10,
-        backgroundColor: 'black',
-        
-       
-    },
 
     header1: {
         fontSize: 64,
         fontWeight: 'bold',
         fontFamily: 'Pacifico',         
-        color: '#EE9B00',       //orange
-        margin: -100,
-        marginRight: -50,
+        color: '#0A9396',       //orange
         position: 'absolute',
-        //top: 10,
+        top: 135,
+        margin: 0, 
     },
 
     header2: {
         fontSize: 64,
         fontWeight: 'bold',
         fontFamily: 'Pacifico', 
-        color: '#E9D8A6',
-        margin: -80,
-        marginRight: -50,
+        color: '#94D2BD',
+        margin: 0, 
+        position: 'absolute',
+        top: 139,
+       
+        
     },
 
     header3: {
         fontSize: 64,
         fontWeight: 'bold',
         fontFamily: 'Pacifico', 
-        color: '#94D2BD',
-        margin: -80,
-        marginRight: -50,
+        color: '#E9D8A6',
+        margin: 0, 
+        position: 'absolute',
+        top: 143,
+       
+      
+        
     },
 
     header4: {
         fontSize: 64,
         fontWeight: 'bold',
         fontFamily: 'Pacifico', 
-        color: '#0A9396',       //blue
-        margin: -80,
-        marginRight: -50,
+        color: '#EE9B00',       //blue
+        margin: 0, 
+        position: 'absolute',
+        top: 143,
+       
+        
+       
     },
 
-    uppercontainer: {
-        alignItems: 'center',
-        position: 'absolute',
-        flex: 1,
-        left: 30,
-       // bottom: 10,
-    },
+    
 
     lowercontainer: {
         alignItems: 'center',
         position: 'absolute',
         flex: 1,
         justifyContent: 'center',
+        padding: 40, 
+        
     },
 
     slogan: {
         color:'#E9D8A6',
         fontFamily: 'ShareTechMono', 
         fontSize: 20,
-        marginBottom: 300,
+        
 
     },
 
@@ -197,9 +205,11 @@ const styles = StyleSheet.create({
     },
 
     terms: {
-        marginTop: 300,
+        marginTop: 500,
         fontFamily: 'ShareTechMono',
-        color: '#E9D8A6',
+        color: '#94D2BD',
+        fontSize: 12,
+        textAlign:'center',
 
     },
 
@@ -215,6 +225,6 @@ const styles = StyleSheet.create({
     createText: {
         fontFamily: 'ShareTechMono', 
         fontSize: 24,
-        fontWeight: "bold",
+        fontWeight: '400',  //doesn't change might have to get bold style 
     },
   });
