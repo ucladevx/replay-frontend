@@ -83,19 +83,17 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#9B2226',
         alignItems: 'center',
-        //flexDirection: 'column',
-        //justifyContent: 'space-around',
         justifyContent: 'center',
+       flexDirection: 'column',
+       justifyContent: 'space-between'
         
     },
     uppercontainer: {
         alignItems: 'center',
-        //position: 'absolute',
+        position: 'absolute',
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: 'white',
-        position: 'absolute',
-        top: 10,
+        
         
     },
 
@@ -104,10 +102,10 @@ const styles = StyleSheet.create({
         fontSize: 64,
         fontWeight: 'bold',
         fontFamily: 'Pacifico',         
-        color: '#0A9396',       //orange
+        color: '#0A9396',       //blue
         position: 'absolute',
         top: 135,
-        margin: 0, 
+        left: -100, 
     },
 
     header2: {
@@ -118,6 +116,7 @@ const styles = StyleSheet.create({
         margin: 0, 
         position: 'absolute',
         top: 139,
+        left: -100, 
        
         
     },
@@ -130,7 +129,7 @@ const styles = StyleSheet.create({
         margin: 0, 
         position: 'absolute',
         top: 143,
-       
+        left: -100, 
       
         
     },
@@ -139,11 +138,11 @@ const styles = StyleSheet.create({
         fontSize: 64,
         fontWeight: 'bold',
         fontFamily: 'Pacifico', 
-        color: '#EE9B00',       //blue
+        color: '#EE9B00',       //orange
         margin: 0, 
         position: 'absolute',
         top: 143,
-       
+        left: -100, 
         
        
     },
@@ -163,6 +162,9 @@ const styles = StyleSheet.create({
         color:'#E9D8A6',
         fontFamily: 'ShareTechMono', 
         fontSize: 20,
+        position: 'absolute',
+        top: 276,
+        right: -50,
         
 
     },

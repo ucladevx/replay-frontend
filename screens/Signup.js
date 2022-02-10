@@ -143,17 +143,17 @@ const styles = StyleSheet.create({
 
     mainscreen: {
         alignItems: 'center',
-        marginTop: 40,
+        marginTop: 55,
     },
 
     image: {
         flex: 1, 
-        width: '85%', 
-        height: '60%', 
+        width: '100%', 
+        height: '70%', 
         resizeMode: 'cover', 
         position: 'absolute',
-        top: 10,
-        right: 20,
+        top: -5,
+        right: 5,
 
 
     },
@@ -186,6 +186,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 30,
         fontFamily: 'GochiHand',
+       
     },
 
     inputView: {
