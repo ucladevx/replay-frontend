@@ -1,25 +1,27 @@
 import React, { useState, useRef } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { TouchableWithoutFeedback, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, Image, Container, Content} from 'react-native';
+import { 
+    TouchableWithoutFeedback, 
+    StyleSheet, 
+    Text, 
+    View, 
+    TextInput, 
+    TouchableOpacity, 
+    KeyboardAvoidingView,
+    Keyboard, 
+    Image, 
+} from 'react-native';
 import * as Font from "expo-font";
-import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
-
-
 
 const fetchFonts = async () => {
 
     return Font.loadAsync({
         GochiHand: require("../assets/fonts/GochiHand-Regular.ttf"),
         ShareTechMono: require("../assets/fonts/ShareTechMono-Regular.ttf"),
-        
       });
 }; 
  
-//const staticImage = require("../assets/walkman.png");
-
-
-
 export default function Signup() {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -28,108 +30,93 @@ export default function Signup() {
     const [dob, setDob] = useState('');
     const ref_input2 = useRef();    //what does this do?
 
-    
-      const [fontLoaded, setFontLoaded] = useState(false);
-      if (!fontLoaded) {
+    const [fontLoaded, setFontLoaded] = useState(false);
+    if (!fontLoaded) {
         return (
-          <AppLoading
+            <AppLoading
             startAsync={fetchFonts}
             onFinish={() => setFontLoaded(true)}
             onError={err => console.log(err)}
-          />
+            />
         );
-      }
-
+    }
       
-        return (        //style={{flex: 1, width: '100%', height: '100%', resizeMode: 'cover'}}
+    return (        
+        <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-                <View style={styles.container}>
+                <View style={styles.content}>
                     <StatusBar style='auto' />
                     <Text style={styles.back}>
                         &lt;- Back
                     </Text>
                     <Image source={require("../assets/walkman.png")} style={styles.image}/>
 
-                    <View style = {styles.mainscreen}>
+                    <View style={styles.mainscreen} >
                         <Text style={styles.header}>Sign Up</Text>
-
                         <View style={styles.inputView}>
-                           <TextInput
-                               style={styles.textInput}
-                               placeholder="Email"
-                               placeholderTextColor="#000000"
-                               onChangeText={(email) => setEmail(email)}
-                               secureTextEntry={false}
-                               onSubmitEditing={() => ref_input2.current.focus()}      //what does this do?
-                           />
-                       </View>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder="Email"
+                                placeholderTextColor="#000000"
+                                onChangeText={(email) => setEmail(email)}
+                                secureTextEntry={false}
+                                onSubmitEditing={() => ref_input2.current.focus()}      //what does this do?
+                            />
+                        </View>
+                        <View style={styles.inputView}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder="Username"
+                                placeholderTextColor="#000000"
+                                onChangeText={(username) => setUsername(username)}
+                                secureTextEntry={false}
+                                onSubmitEditing={() => ref_input2.current.focus()}      //what does this do?
+                            />
+                        </View>
+                        <View style = {{marginBottom: 10}}>
+                            <Text style={styles.warning}>*may be shown publicly</Text>
+                        </View>
+                        <View style={styles.inputView}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder="Create Password"
+                                placeholderTextColor="#000000"
+                                secureTextEntry
+                                onChangeText={(password) => setPassword(password)}
+                                ref={ref_input2}
+                            />
+                        </View>
+                        <View style={styles.inputView}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder="Confirm Password"
+                                placeholderTextColor="#000000"
+                                secureTextEntry
+                                onChangeText={(confirmpassword) => setConfirmPassword(confirmpassword)}
+                                //ref={ref_input2}     what does this do
+                            />
+                        </View>
+                        {/*TODO: Change input to pull up a calender*/}
+                        <View style={styles.inputView}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder="MM/DD/YYYY"
+                                placeholderTextColor="#000000"
+                                secureTextEntry
+                                onChangeText={(dob) => setDob(dob)}
+                                //ref={ref_input2}              what does this do
+                            />
+                        </View>
 
-                       <View style={styles.inputView}>
-                           <TextInput
-                               style={styles.textInput}
-                               placeholder="Username"
-                               placeholderTextColor="#000000"
-                               onChangeText={(username) => setUsername(username)}
-                               secureTextEntry={false}
-                               onSubmitEditing={() => ref_input2.current.focus()}      //what does this do?
-                           />
-                       </View>
-
-                       <View style = {{marginBottom: 10}}>
-                           <Text style={styles.warning}>*may be shown publicly</Text>
-                       </View>
-
-
-                       <View style={styles.inputView}>
-                           <TextInput
-                               style={styles.textInput}
-                               placeholder="Create Password"
-                               placeholderTextColor="#000000"
-                               secureTextEntry
-                               onChangeText={(password) => setPassword(password)}
-                               ref={ref_input2}
-                           />
-                       </View>
-
-
-
-                       <View style={styles.inputView}>
-                           <TextInput
-                               style={styles.textInput}
-                               placeholder="Confirm Password"
-                               placeholderTextColor="#000000"
-                               secureTextEntry
-                               onChangeText={(confirmpassword) => setConfirmPassword(confirmpassword)}
-                               //ref={ref_input2}     what does this do
-                           />
-                       </View>
-
-
-                       <View style={styles.inputView}>
-                           <TextInput
-                               style={styles.textInput}
-                               placeholder="MM/DD/YYYY"
-                               placeholderTextColor="#000000"
-                               secureTextEntry
-                               onChangeText={(dob) => setDob(dob)}
-                               //ref={ref_input2}              what does this do
-                           />
-                       </View>
-
-                       <TouchableOpacity style={styles.login_button}>
-                            <Text style={styles.loginText}>Next</Text>
+                        <TouchableOpacity style={styles.sign_up_button}>
+                            <Text style={styles.sign_up_text}>Next</Text>
                         </TouchableOpacity>
-
-
-
                     </View>
-               
-            
                 </View>
             </TouchableWithoutFeedback>
-        
-        );
-    
+        </KeyboardAvoidingView>
+    );
+
 }
 
 const styles = StyleSheet.create({
@@ -138,7 +125,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#EE9B00',
         alignItems: 'center',
         justifyContent: 'center',
-        //marginTop: 
+    },
+
+    content: {
+        flex: 1, 
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     mainscreen: {
@@ -147,46 +140,39 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        flex: 1, 
-        width: '100%', 
-        height: '70%', 
-        resizeMode: 'cover', 
         position: 'absolute',
-        top: -5,
-        right: 5,
-
-
+        resizeMode: 'cover',
+        height: 580,
+        width: 410,
+        top: 20,
+        right: 0,
     },
 
     back: { //probably need to change the location of the back to work for all screens?
         alignItems: 'stretch',
         justifyContent: 'center',
-            fontFamily: 'GochiHand',
-            position: 'absolute',
-            width: 95,
-            height: 20,
-            left: 20,
-            top: 50,
-            fontSize: 24
+        fontFamily: 'GochiHand',
+        position: 'absolute',
+        width: 95,
+        height: 20,
+        left: 20,
+        top: 50,
+        fontSize: 24
     },
 
     warning: {
         fontFamily: 'ShareTechMono', 
         color: '#9B2226',
-        //textAlign: "left",
         position: 'absolute',
         right: -20,
         bottom: -5,
-        //left: 90,
-        
     },
 
     header: {
         fontSize: 40,
         fontWeight: 'bold',
-        marginBottom: 30,
+        marginBottom: 20,
         fontFamily: 'GochiHand',
-       
     },
 
     inputView: {
@@ -216,23 +202,12 @@ const styles = StyleSheet.create({
         
     },
 
-    forgot_button: {
-        height: 30,
-        marginBottom: 0,
-    },
-
     sign_up_button: {
-        height: 30,
-        marginBottom: 30,
-    },
-     
-    login_button: {
         width: 179,
         borderRadius: 25,
         height: 50,
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 40,
         backgroundColor: "#A5A6F6",
         borderWidth: 3,
         shadowColor: '#000000',
@@ -242,13 +217,9 @@ const styles = StyleSheet.create({
 
     },
 
-
-    loginText: {
+    sign_up_text: {
         fontFamily: 'ShareTechMono', 
         fontSize: 24,
         fontWeight: "bold", //figure out how to make bold
     },
-
-
-
-  });
+});
