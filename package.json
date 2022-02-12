@@ -19,6 +19,8 @@
     "react-native": "0.64.2",
     "react-native-maps": "^0.29.4",
     "react-native-web": "0.17.1",
+    "expo-font": "~10.0.3",
+    "expo-app-loading": "~1.2.1",
     "yarn": "^1.22.17"
   },
   "devDependencies": {
