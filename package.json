@@ -18,7 +18,8 @@
     "react-native-maps": "^0.29.4",
     "react-native-web": "0.17.1",
     "expo-font": "~10.0.3",
-    "expo-app-loading": "~1.2.1"
+    "expo-app-loading": "~1.2.1",
+    "expo-checkbox": "~2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

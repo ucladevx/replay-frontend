@@ -1,10 +1,12 @@
     import React, { useState, useRef } from 'react';
     import { StatusBar } from 'expo-status-bar';
-    import { TouchableWithoutFeedback, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, Image } from 'react-native';
+    import { TouchableWithoutFeedback, StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, Keyboard, Image, Modal } from 'react-native';
     import Checkbox from 'expo-checkbox';
     import * as Font from "expo-font";
     import { useFonts } from 'expo-font';
     import AppLoading from 'expo-app-loading';
+   // import Modal from "react-native-modal";
+
 
     const fetchFonts = async () => {
         return Font.loadAsync({
@@ -12,7 +14,7 @@
             ShareTechMono: require("../assets/fonts/ShareTechMono-Regular.ttf"),
         });
     }; 
-
+    
     export default function Login() {
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
@@ -29,66 +31,38 @@
             />
             );
         }
-        
-
         return (
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                 <View style={styles.container}>
-                    
-                    <Image source={require("../assets/leftcd.png")} style={styles.leftCD}/> 
-                    <Image source={require("../assets/rightcd.png")} style={styles.rightCD}/>
-
                     <StatusBar style='auto' />
                     <Text style={styles.back}>
                         &lt;- Back 
                     </Text>
+                    
+                    <View style={styles.title}>
                         <Text style={styles.header}>
-                            Sign In
+                            Connect with a music platform of your choice!
                         </Text>
+                    </View>
+                    
 
-                        <View style={styles.inputView}>
-                            <TextInput
-                                style={styles.textInput}
-                                placeholder="Username or Email"
-                                placeholderTextColor="#000000"
-                                onChangeText={(email) => setEmail(email)}
-                                secureTextEntry={false}
-                                onSubmitEditing={() => ref_input2.current.focus()}
-                            />
-                        </View>
+                    <TouchableOpacity style={styles.connect_spotify}>
+                        <Text style={styles.connectSpotify}>CONTINUE WITH <Text style={styles.connectSpotifyGreen}>SPOTIFY</Text></Text>
+                    </TouchableOpacity>
 
-                        <View style={styles.inputView}>
-                            <TextInput
-                                style={styles.textInput}
-                                placeholder="Password"
-                                placeholderTextColor="#000000"
-                                secureTextEntry
-                                onChangeText={(password) => setPassword(password)}
-                                ref={ref_input2}
-                            />
-                        </View>
+                    <TouchableOpacity style={styles.unavailable_connect}>
+                        <Text style={styles.unavailableConnect}>CONTINUE WITH APPLE MUSIC</Text>
+                    </TouchableOpacity>
 
-                        <TouchableOpacity>
-                            <Text style={styles.forgot_button}>Forgot Password?</Text>
-                        </TouchableOpacity>
+                    <TouchableOpacity style={styles.unavailable_connect}>
+                        <Text style={styles.unavailableConnect}>CONTINUE WITH SOUNDCLOUD</Text>
+                    </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.login_button}>
-                            <Text style={styles.loginText}>Log In</Text>
-                        </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Text style={styles.why_connect} onPress={() => Alert.alert("Replay needs access to a music streaming platform for users to share their music with others!", "")}>Why connect?</Text>
                         
-                        <View style={styles.checkboxContainer}>
-                            
-                            <Text style={styles.label}>
-                                <Checkbox
-                                    value={isChecked}
-                                    onValueChange={setChecked}
-                                    style={styles.checkbox}
-                                />
-                            <Text style={{paddingLeft: 20}}>KEEP ME SIGNED IN</Text>
-                            </Text>
-                        </View>
-                    
-                    
+                    </TouchableOpacity>
+
                     
                 </View>
             </TouchableWithoutFeedback>
@@ -100,13 +74,11 @@
         
         container: {
             flex: 1,
-            flexDirection: 'column',
             backgroundColor: '#EE9B00',
             alignItems: 'center',
             justifyContent: 'center',
-            
         },
-        back: { //probably need to change the location of the back to work for all screens?
+        back: { 
             alignItems: 'stretch',
             justifyContent: 'center',
             fontFamily: 'GochiHand',
@@ -118,11 +90,11 @@
             fontSize: 24
         },
         header: {
-            fontSize: 48,
-            fontWeight: 'bold',
-            marginBottom: 20,
+            fontSize: 36,
+            fontWeight: 'normal',
+            marginBottom: 30,
             fontFamily: 'GochiHand',
-            
+            textAlign: "center"
         },
 
         inputView: {
@@ -167,7 +139,7 @@
             height: 50,
             alignItems: "center",
             justifyContent: "center",
-            marginTop: 10,
+            marginTop: 40,
             marginBottom: 10,
             backgroundColor: "#A5A6F6",
             fontFamily: 'ShareTechMono', 
@@ -189,42 +161,81 @@
             borderWidth: 3,
             
         },
-        checkboxContainer: {
-            marginBottom: 170
-        },
+
+        //need to add a checkbox checked
 
         label: {
             fontFamily: 'ShareTechMono',
             fontSize: 20,
+            marginLeft: 20,
             lineHeight: 23
         },
 
-        leftCD: {
-            flex: 1, 
-            width: '35%', 
-            height: '35%', 
-            resizeMode: 'cover', 
-            position: 'absolute', 
-            opacity: 0.3,
-            top: 470,
-            left: 40,
-            
+        connect_spotify: {
+            backgroundColor: "#F8FDF4",
+            borderRadius: 25,
+            borderWidth: 1,
+            width: "70%",
+            height: 45,
+            marginBottom: 20,
+            alignItems: "center",
+            shadowColor: "#000000",
+            shadowOffset: {width:0, height: 4},
+            shadowOpacity: 0.5,
+            shadowRadius: 4
+        },
+        connectSpotify: {
+            height: 50,
+            fontSize: 18,
+            flex: 1,
+            fontFamily: 'ShareTechMono',
+            color: "black",
+            marginTop: 10
         },
 
-        rightCD: {
-            flex: 1, 
-            //width: '35%', 
-            //height: '35%', 
-            resizeMode: 'cover', 
-            position: 'absolute', 
-            opacity: 0.3,
-            top: 500,
-            left: 200
-
+        connectSpotifyGreen: {
+            height: 50,
+            fontSize: 18,
+            flex: 1,
+            fontFamily: 'ShareTechMono',
+            color: "#1DBA54"
         },
-        
+
+        unavailable_connect: {
+            backgroundColor: "#B27400",
+            borderRadius: 25,
+            borderWidth: 1,
+            width: "70%",
+            height: 45,
+            marginBottom: 20,
+            alignItems: "center",
+            shadowColor: "#000000",
+            shadowOffset: {width:0, height: 4},
+            shadowOpacity: 0.5,
+            shadowRadius: 4
+        },
+
+        unavailableConnect: {
+            height: 50,
+            fontSize: 18,
+            flex: 1,
+            fontFamily: 'ShareTechMono',
+            color: "#865700",
+            marginTop: 10
+        },
+
+        why_connect: {
+            height: 30,
+            marginTop:0,
+            marginBottom: 0,
+            fontFamily: 'ShareTechMono',
+            color: "#9B2226",
+            marginTop: 40,
+            fontSize: 20
+        },
+        title: {
+            width: 302,
+            alignItems: "center",
+            marginBottom: 20
+        }
     });
-
-    //todo
-    //add space between checkbox and KEEP ME SIGNED IN
-    //need to move everything up
