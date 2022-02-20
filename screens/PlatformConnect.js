@@ -4,7 +4,6 @@ import { TouchableWithoutFeedback, StyleSheet, Text, View, TouchableOpacity, Ale
 import * as Font from "expo-font";
 import AppLoading from 'expo-app-loading';
 
-
 const fetchFonts = async () => {
     return Font.loadAsync({
         GochiHand: require("../assets/fonts/GochiHand-Regular.ttf"),
@@ -12,12 +11,7 @@ const fetchFonts = async () => {
     });
 }; 
 
-export default function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const ref_input2 = useRef();
-    const [isChecked, setChecked] = useState(false);
-
+export default function PlatformConnect() {
     const [fontLoaded, setFontLoaded] = useState(false);
     if (!fontLoaded) {
         return (
@@ -42,7 +36,6 @@ export default function Login() {
                     </Text>
                 </View>
                 
-
                 <TouchableOpacity style={styles.connect_spotify}>
                     <Text style={styles.connectSpotify}>CONTINUE WITH <Text style={styles.connectSpotifyGreen}>SPOTIFY</Text></Text>
                 </TouchableOpacity>
@@ -64,10 +57,7 @@ export default function Login() {
                     >
                         Why connect?
                     </Text>
-                    
                 </TouchableOpacity>
-
-                
             </View>
         </TouchableWithoutFeedback>
     );
@@ -163,8 +153,6 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         
     },
-
-    //need to add a checkbox checked
 
     label: {
         fontFamily: 'ShareTechMono',
