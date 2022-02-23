@@ -4,11 +4,10 @@ import Home from './screens/Home';
 import Login from './screens/Login';
 import Signup from './screens/Signup'; 
 import Landing from './screens/Landing';
-import Test from './components/LocationPermissionPopup'
 
 export default function App() {
   return (
-    <Test />
+    <Home />
   );
 }
 
