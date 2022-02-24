@@ -8,7 +8,7 @@ import Landing from './screens/Landing';
 
 export default function App() {
   return (
-    <Home />
+    <PlatformConnect />
   );
 }
 

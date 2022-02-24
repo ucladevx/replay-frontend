@@ -22,6 +22,16 @@ export default function PlatformConnect() {
         />
         );
     }
+
+    const connectWithSpotify = () => {
+        console.log('test')
+        fetch('http://localhost:9000/health')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+    }
+
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.container}>
@@ -36,8 +46,10 @@ export default function PlatformConnect() {
                     </Text>
                 </View>
                 
-                <TouchableOpacity style={styles.connect_spotify}>
-                    <Text style={styles.connectSpotify}>CONTINUE WITH <Text style={styles.connectSpotifyGreen}>SPOTIFY</Text></Text>
+                <TouchableOpacity style={styles.connect_spotify} onPress={connectWithSpotify}>
+                    <Text style={styles.connectSpotify}>CONTINUE WITH 
+                        <Text style={styles.connectSpotifyGreen}> SPOTIFY</Text>
+                    </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.unavailable_connect}>
