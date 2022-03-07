@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import * as Font from "expo-font";
 import AppLoading from 'expo-app-loading';
+import PlatformConnect from './PlatformConnect';
 
 const fetchFonts = async () => {
 
@@ -22,7 +23,7 @@ const fetchFonts = async () => {
       });
 }; 
  
-export default function Signup() {
+export default function Signup({ navigation }) {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -46,11 +47,13 @@ export default function Signup() {
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                 <View style={styles.content}>
                     <StatusBar style='auto' />
-                    <Text style={styles.back}>
-                        &lt;- Back
-                    </Text>
                     <Image source={require("../assets/walkman.png")} style={styles.image}/>
-
+                    <Text 
+                        style={styles.back}
+                        onPress={() => navigation.goBack()}
+                    >
+                        &lt;- Back 
+                    </Text>
                     <View style={styles.mainscreen} >
                         <Text style={styles.header}>Sign Up</Text>
                         <View style={styles.inputView}>
@@ -108,8 +111,13 @@ export default function Signup() {
                             />
                         </View>
 
-                        <TouchableOpacity style={styles.sign_up_button}>
-                            <Text style={styles.sign_up_text}>Next</Text>
+                        <TouchableOpacity 
+                            style={styles.sign_up_button}
+                            onPress={() => navigation.navigate(PlatformConnect)}
+                        >
+                            <Text 
+                                style={styles.sign_up_text}
+                            >Next</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
