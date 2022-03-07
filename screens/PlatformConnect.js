@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { TouchableWithoutFeedback, StyleSheet, Text, View, TouchableOpacity, Alert, Keyboard, Image, Modal } from 'react-native';
+import { TouchableWithoutFeedback, StyleSheet, Text, View, TouchableOpacity, Alert, Keyboard, Linking } from 'react-native';
 import * as Font from "expo-font";
 import AppLoading from 'expo-app-loading';
 
@@ -25,10 +25,16 @@ export default function PlatformConnect() {
 
     const connectWithSpotify = () => {
         console.log('test')
-        fetch('http://localhost:9000/health')
+        fetch('http://localhost:9000/auth/spotify', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            Linking.openURL(data);
         })
     }
 
