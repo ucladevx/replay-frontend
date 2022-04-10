@@ -23,20 +23,20 @@ export default function App() {
   return (
     <View style={styles.container}> 
       <ImageBackground 
-      source =  {require('../assets/Diagram - Replay-3.png')}
+      source =  {require('../assets/loading1.png')}
       style = {styles.first} >
       
       
 
       <ImageBackground 
-      source = {require('../assets/Diagram - Replay.png')}
+      source = {require('../assets/loading2.png')}
       style= {styles.third}>
 
       
       </ImageBackground>
 
       <Animated.Image 
-      source = {require('../assets/Diagram - Replay-2.png')}
+      source = {require('../assets/loading3.png')}
       style= {{height: 197, width: 197, transform: [{rotate: spin}] }}>
 
       </Animated.Image>

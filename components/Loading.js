@@ -1,32 +1,25 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React from "react";
 
-
- 
-export default function App() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function Loading() {
   let [fontsLoaded] = useFonts({
    'GochiHand': require("../assets/fonts/GochiHand-Regular.ttf"),
     'ShareTechMono': require("../assets/fonts/ShareTechMono-Regular.ttf"),
   });
   
-
   return (
     <View style={styles.container}> 
       <Image 
-      source =  {require("../assets/Diagram-Replay-3.png")}
-      style = {styles.first} />
+        source = {require("../assets/loading1.png")}
+        style = {styles.first} />
       <Image 
-      source =  {require("../assets/Diagram-Replay-2.png")}
-      style = {styles.second} />
+        source = {require("../assets/loading2.png")}
+        style = {styles.second} />
       <Image 
-      source =  {require("../assets/Diagram-Replay.png")}
-      style = {styles.third} />
+        source = {require("../assets/loading3.png")}
+        style = {styles.third} />
     </View>
   );
 }
-
  
 const styles = StyleSheet.create({
   container: {
