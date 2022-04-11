@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { checkIfUnderage } from '../helpers/date';
 import { 
     TouchableWithoutFeedback, 
     StyleSheet, 
@@ -41,7 +42,7 @@ export default function Signup({ navigation }) {
             />
         );
     }
-      
+
     return (        
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -103,9 +104,8 @@ export default function Signup({ navigation }) {
                         <View style={styles.inputView}>
                             <TextInput
                                 style={styles.textInput}
-                                placeholder="MM/DD/YYYY"
+                                placeholder="YYYY-MM-DD"
                                 placeholderTextColor="#000000"
-                                secureTextEntry
                                 onChangeText={(dob) => setDob(dob)}
                                 //ref={ref_input2}              what does this do
                             />
@@ -113,7 +113,10 @@ export default function Signup({ navigation }) {
 
                         <TouchableOpacity 
                             style={styles.sign_up_button}
-                            onPress={() => navigation.navigate(PlatformConnect)}
+                            onPress={() => {
+                                if (checkIfUnderage(dob)) {alert('Oops! You must be at least 13 years of age to use Replay.');}
+                                else { navigation.navigate(PlatformConnect)}}
+                            }
                         >
                             <Text 
                                 style={styles.sign_up_text}
