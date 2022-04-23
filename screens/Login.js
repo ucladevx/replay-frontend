@@ -4,6 +4,8 @@ import { TouchableWithoutFeedback, StyleSheet, Text, View, TextInput, TouchableO
 import Checkbox from 'expo-checkbox';
 import * as Font from "expo-font";
 import AppLoading from 'expo-app-loading';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const fetchFonts = async () => {
     return Font.loadAsync({
@@ -12,7 +14,7 @@ const fetchFonts = async () => {
     });
 }; 
 
-export default function Login() {
+export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const ref_input2 = useRef();
@@ -38,7 +40,10 @@ export default function Login() {
                 <Image source={require("../assets/rightcd.png")} style={styles.rightCD}/>
 
                 <StatusBar style='auto' />
-                <Text style={styles.back}>
+                <Text 
+                    style={styles.back}
+                    onPress={() => navigation.goBack()}
+                >
                     &lt;- Back 
                 </Text>
                     <Text style={styles.header}>

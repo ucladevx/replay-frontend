@@ -4,7 +4,6 @@ import { TouchableWithoutFeedback, StyleSheet, Text, View, TouchableOpacity, Key
 import * as Font from "expo-font";
 import AppLoading from 'expo-app-loading';
 
-
 const fetchFonts = async () => {
     return Font.loadAsync({
         ShareTechMono: require("../assets/fonts/ShareTechMono-Regular.ttf"),
@@ -12,7 +11,7 @@ const fetchFonts = async () => {
       });
 }; 
 
-export default function Landing() {
+export default function Landing({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const ref_input2 = useRef();
@@ -45,10 +44,15 @@ export default function Landing() {
                 <View style= {styles.lowercontainer}>
                     <Text style = {styles.terms}>By signing up for Replay, you agree to our Terms of Service.</Text>   
                     {/* terms of service will need to probably be a hyperlink to that, needs to be styled? */}
-                    <TouchableOpacity style={styles.create_account}>
+                    <TouchableOpacity 
+                        style={styles.create_account}
+                        onPress={() => navigation.navigate('Signup')}
+                    >
                         <Text style={styles.createText}>Create Account</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('Login')}
+                    >
                         <Text style={styles.sign_in}>Sign In</Text>
                     </TouchableOpacity>
                 </View>
