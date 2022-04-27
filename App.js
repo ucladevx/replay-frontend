@@ -5,10 +5,11 @@ import Login from './screens/Login';
 import PlatformConnect from './screens/PlatformConnect';
 import Signup from './screens/Signup'; 
 import Landing from './screens/Landing';
+import Profile from './screens/Profile';
 
 export default function App() {
   return (
-    <Home />
+    <Profile />
   );
 }
 
