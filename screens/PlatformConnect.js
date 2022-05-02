@@ -11,7 +11,7 @@ const fetchFonts = async () => {
     });
 }; 
 
-export default function PlatformConnect() {
+export default function PlatformConnect({ navigation }) {
     const [fontLoaded, setFontLoaded] = useState(false);
     if (!fontLoaded) {
         return (
@@ -26,7 +26,10 @@ export default function PlatformConnect() {
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.container}>
                 <StatusBar style='auto' />
-                <Text style={styles.back}>
+                <Text 
+                    style={styles.back}
+                    onPress={() => navigation.goBack()}    
+                >
                     &lt;- Back 
                 </Text>
                 
