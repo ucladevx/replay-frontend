@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Home from './screens/Home';
 import Login from './screens/Login';
 import PlatformConnect from './screens/PlatformConnect';
 import Signup from './screens/Signup'; 
 import Landing from './screens/Landing';
+import Profile from './screens/Profile';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

@@ -64,7 +64,7 @@ export default function Signup({ navigation }) {
                                 placeholderTextColor="#000000"
                                 onChangeText={(email) => setEmail(email)}
                                 secureTextEntry={false}
-                                onSubmitEditing={() => ref_input2.current.focus()}      //what does this do?
+                                onSubmitEditing={() => ref_input2.current.focus()}      
                             />
                         </View>
                         <View style={styles.inputView}>
@@ -74,7 +74,7 @@ export default function Signup({ navigation }) {
                                 placeholderTextColor="#000000"
                                 onChangeText={(username) => setUsername(username)}
                                 secureTextEntry={false}
-                                onSubmitEditing={() => ref_input2.current.focus()}      //what does this do?
+                                onSubmitEditing={() => ref_input2.current.focus()}      
                             />
                         </View>
                         <View style = {{marginBottom: 10}}>
@@ -97,7 +97,7 @@ export default function Signup({ navigation }) {
                                 placeholderTextColor="#000000"
                                 secureTextEntry
                                 onChangeText={(confirmpassword) => setConfirmPassword(confirmpassword)}
-                                //ref={ref_input2}     what does this do
+                                
                             />
                         </View>
                         {/*TODO: Change input to pull up a calender*/}
@@ -107,7 +107,7 @@ export default function Signup({ navigation }) {
                                 placeholder="YYYY-MM-DD"
                                 placeholderTextColor="#000000"
                                 onChangeText={(dob) => setDob(dob)}
-                                //ref={ref_input2}              what does this do
+                                
                             />
                         </View>
 
