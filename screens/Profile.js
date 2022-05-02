@@ -1,13 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { TouchableWithoutFeedback, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, Image } from 'react-native';
+import { TouchableWithoutFeedback, StyleSheet, Text, View, Keyboard, Image } from 'react-native';
 import * as Font from "expo-font";
 import AppLoading from 'expo-app-loading';
-import { ImageBackground } from 'react-native-web';
 
 
 const fetchFonts = async () => {
-
     return Font.loadAsync({
         MontserratSemiBold: require("../assets/fonts/Montserrat-SemiBold.ttf"),
         MontserratRegular: require("../assets/fonts/MontserratRegular.ttf"),
@@ -40,14 +38,11 @@ export default function Profile() {
     return (
         //keyboardavoidingview
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-
             <View style={styles.container}>
-
                 <StatusBar style='auto' />
                 <Text style={styles.back}>
                     &lt;
                 </Text>
-
 
                 <View style={styles.pfpContainer}>
                     <Image source={require("../assets/accounticon.png")} style={styles.profileImage} />
@@ -65,15 +60,12 @@ export default function Profile() {
                             <Text style={styles.replayText}>Olivia Rodrigo</Text>
                         </View>
 
-
                         <View style={{ flexDirection: 'row', left: 150, margin: 10, }}>
                             <Image source={require("../assets/play.png")} style={styles.playIcon} />
                             <Image source={require("../assets/plus.png")} style={styles.addIcon} />
                             <Image source={require("../assets/spotifyicon.png")} style={styles.spotifyIcon} />
                         </View>
-
                     </View>
-
 
                     <View style={{ marginTop: 5, flexDirection: 'row' }} >
                         <Image source={require("../assets/johnlegend.png")} style={styles.replay1img} />
@@ -83,13 +75,11 @@ export default function Profile() {
                             <Text style={styles.replayText}>John Legend</Text>
                         </View>
 
-
                         <View style={{ flexDirection: 'row', left: 156, margin: 10, }}>
                             <Image source={require("../assets/play.png")} style={styles.playIcon} />
                             <Image source={require("../assets/plus.png")} style={styles.addIcon} />
                             <Image source={require("../assets/spotifyicon.png")} style={styles.spotifyIcon} />
                         </View>
-
                     </View>
 
                     <View style={{ marginTop: 5, flexDirection: 'row' }} >
@@ -100,13 +90,11 @@ export default function Profile() {
                             <Text style={styles.replayText}>Conan Gray</Text>
                         </View>
 
-
                         <View style={{ flexDirection: 'row', left: 165, margin: 10, }}>
                             <Image source={require("../assets/play.png")} style={styles.playIcon} />
                             <Image source={require("../assets/plus.png")} style={styles.addIcon} />
                             <Image source={require("../assets/spotifyicon.png")} style={styles.spotifyIcon} />
                         </View>
-
                     </View>
 
                     <View style={{ marginTop: 5, flexDirection: 'row' }} >
@@ -117,13 +105,11 @@ export default function Profile() {
                             <Text style={styles.replayText}>Lauv</Text>
                         </View>
 
-
                         <View style={{ flexDirection: 'row', left: 145, margin: 10, }}>
                             <Image source={require("../assets/play.png")} style={styles.playIcon} />
                             <Image source={require("../assets/plus.png")} style={styles.addIcon} />
                             <Image source={require("../assets/spotifyicon.png")} style={styles.spotifyIcon} />
                         </View>
-
                     </View>
 
 
@@ -135,67 +121,59 @@ export default function Profile() {
                             <Text style={styles.replayText}>Bruno Major</Text>
                         </View>
 
-
                         <View style={{ flexDirection: 'row', left: 160, margin: 10, }}>
                             <Image source={require("../assets/play.png")} style={styles.playIcon} />
                             <Image source={require("../assets/plus.png")} style={styles.addIcon} />
                             <Image source={require("../assets/spotifyicon.png")} style={styles.spotifyIcon} />
                         </View>
-
                     </View>
-
                 </View>
 
-
-                
                 <Text style={styles.topArtistHeader}>RetuneUser1401's Top Artists</Text>
-
                 <View style={styles.top_artists}>
-                        <View style={styles.artist_bubble} backgroundColor='#AAD9EE' borderColor='#AAD9EE'>
-                            <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
-                            <Text style={styles.artistName}>
-                                Olivia Rodrigo
-                            </Text>
-                        </View>
-                        <View style={styles.artist_bubble} backgroundColor='#256D7B' borderColor='#256D7B'>
-                            <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
-                            <Text style={styles.artistName}>
-                                Harry Styles
-                            </Text>
-                        </View>
-                        <View style={styles.artist_bubble} backgroundColor='#E9D8A6' borderColor='#E9D8A6'>
-                            <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
-                            <Text style={styles.artistName}>
-                                Lewis Capaldi
-                            </Text>
-                        </View>
-                        <View style={styles.artist_bubble} backgroundColor='#F6A5A5' borderColor='#F6A5A5'>
-                            <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
-                            <Text style={styles.artistName}>
-                                Mitski
-                            </Text>
-                        </View>
-                        <View style={styles.artist_bubble} backgroundColor='#C1876B' borderColor='#C1876B'>
-                            <Image source={require("../assets/conangray.png")} style={styles.artist_pic} />
-                            <Text style={styles.artistName}>
-                                Haim
-                            </Text>
-                        </View>
-                        <View style={styles.artist_bubble} backgroundColor='#83C64E' borderColor='#83C64E'>
-                            <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
-                            <Text style={styles.artistName}>
-                                BTS
-                            </Text>
-                        </View>
-                        <View style={styles.artist_bubble} backgroundColor='#4A192C' borderColor='#4A192C'>
-                            <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
-                            <Text style={styles.artistName}>
-                                Pentatonix
-                            </Text>
-                        </View>
-
+                    <View style={styles.artist_bubble} backgroundColor='#AAD9EE' borderColor='#AAD9EE'>
+                        <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
+                        <Text style={styles.artistName}>
+                            Olivia Rodrigo
+                        </Text>
+                    </View>
+                    <View style={styles.artist_bubble} backgroundColor='#256D7B' borderColor='#256D7B'>
+                        <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
+                        <Text style={styles.artistName}>
+                            Harry Styles
+                        </Text>
+                    </View>
+                    <View style={styles.artist_bubble} backgroundColor='#E9D8A6' borderColor='#E9D8A6'>
+                        <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
+                        <Text style={styles.artistName}>
+                            Lewis Capaldi
+                        </Text>
+                    </View>
+                    <View style={styles.artist_bubble} backgroundColor='#F6A5A5' borderColor='#F6A5A5'>
+                        <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
+                        <Text style={styles.artistName}>
+                            Mitski
+                        </Text>
+                    </View>
+                    <View style={styles.artist_bubble} backgroundColor='#C1876B' borderColor='#C1876B'>
+                        <Image source={require("../assets/conangray.png")} style={styles.artist_pic} />
+                        <Text style={styles.artistName}>
+                            Haim
+                        </Text>
+                    </View>
+                    <View style={styles.artist_bubble} backgroundColor='#83C64E' borderColor='#83C64E'>
+                        <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
+                        <Text style={styles.artistName}>
+                            BTS
+                        </Text>
+                    </View>
+                    <View style={styles.artist_bubble} backgroundColor='#4A192C' borderColor='#4A192C'>
+                        <Image source={require("../assets/Lewis.png")} style={styles.artist_pic} />
+                        <Text style={styles.artistName}>
+                            Pentatonix
+                        </Text>
+                    </View>
                 </View>
-
 
                 <Text style={styles.playlist_header}>RetuneUser's Playlists</Text>
                 <View style={styles.playlistgroup}>
@@ -222,11 +200,7 @@ export default function Profile() {
                         <Text style={styles.playlistTitle}>Retune Added Songs</Text>
                     </View>
                 </View>
-
             </View>
-
-
-
         </TouchableWithoutFeedback>
 
     );
@@ -235,15 +209,12 @@ export default function Profile() {
 }
 
 
-
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#1C1B1B',
         flex: 1,
-        alignItems: 'center', //this makes it centered horizontally 
-        //justifyContent: 'center', //this makes it centered vertically 
+        alignItems: 'center', 
         flexDirection: 'column',
-
     },
     back: {
         alignItems: 'stretch',
@@ -256,14 +227,10 @@ const styles = StyleSheet.create({
         top: 50,
         fontSize: 24,
         color: 'white'
-
     },
     pfpContainer: {
         top: 50,
-        //left: 10,
         alignItems: 'center',
-        
-
     },
     profileImage: {
         width: 80,
@@ -293,7 +260,6 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 10,
         margin: 1,
-
     },
     replay1img: {
         width: 45,
@@ -326,7 +292,6 @@ const styles = StyleSheet.create({
         color: 'white',
         right: 50,
         top: 50,
-
     },
     artistName: {
         color: 'white',
@@ -386,9 +351,6 @@ const styles = StyleSheet.create({
         color: 'white',
         right: 70
     },
-
-
-
 });
 
 

@@ -89,28 +89,6 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },
 
-    inputView: {
-        backgroundColor: "#F8FDF4",
-        borderRadius: 10,
-        borderWidth: 1,
-        width: "70%",
-        height: 45,
-        marginBottom: 20,
-        alignItems: "center",
-        shadowColor: "#000000",
-        shadowOffset: {width:0, height: 4},
-        shadowOpacity: 0.5,
-        shadowRadius: 4
-    },
-
-    textInput: {
-        height: 50,
-        fontSize: 20,
-        flex: 1,
-        fontFamily: 'ShareTechMono',
-        textDecorationLine: 'underline',
-    },
-
     forgot_button: {
         height: 30,
         marginTop:0,
