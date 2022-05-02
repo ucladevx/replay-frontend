@@ -24,17 +24,21 @@ export default function PlatformConnect() {
     }
 
     const connectWithSpotify = () => {
-        console.log('test')
         fetch('http://localhost:9000/auth/spotify', {
-            method: 'POST', // or 'PUT'
+            method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',
             },
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            Linking.openURL(data);
+            let spot_link = data;
+            // change to appropriate uri after successful sign in
+            // exp://127.0.0.1:19000 for development in Expo GO only 
+            spot_link = spot_link.replace("redirect_uri=undefined", "redirect_uri=exp://127.0.0.1:19000")
+            console.log(spot_link)
+            Linking.openURL(spot_link);
+            
         })
     }
 
