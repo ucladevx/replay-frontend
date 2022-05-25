@@ -15,13 +15,6 @@ export default function Home() {
 
   useEffect(() => {
     (async () => {
-      // let location = await getUserLocationData();
-      // if (location !== "INVALID") {
-      //   console.log(location.coords.latitude)
-      //   console.log(location.coords.longitude)
-      //   setCurrentLatitude(location.coords.latitude)
-      //   setCurrentLongitude(location.coords.longitude)
-      // }
       //check if user has granted location permissions
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
@@ -29,8 +22,6 @@ export default function Home() {
         return "INVALID";
       }
 
-      //fetch location data
-      //let location = await Location.getCurrentPositionAsync({});
       let location = await Location.watchPositionAsync({
         accuracy:Location.Accuracy.High,
         timeInterval:10000,
@@ -44,72 +35,6 @@ export default function Home() {
       )
     })();
   }, []);
-
-
-  /*
-  const getOneTimeLocation = () => {
-    setLocationStatus('Getting Location ...');
-    Geolocation.getCurrentPosition(
-      //Will give you the current location
-      (position) => {
-        setLocationStatus('You are Here');
-
-        //getting the Longitude from the location json
-        const currentLongitude = 
-          JSON.stringify(position.coords.longitude);
-
-        //getting the Latitude from the location json
-        const currentLatitude = 
-          JSON.stringify(position.coords.latitude);
-
-        //Setting Longitude state
-        setCurrentLongitude(currentLongitude);
-        
-        //Setting Longitude state
-        setCurrentLatitude(currentLatitude);
-      },
-      (error) => {
-        setLocationStatus(error.message);
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 30000,
-        maximumAge: 1000
-      },
-    );
-  };
-
-  const subscribeLocationLocation = () => {
-    watchID = Geolocation.watchPosition(
-      (position) => {
-        //Will give you the location on location change
-        
-        setLocationStatus('You are Here');
-        console.log(position);
-
-        //getting the Longitude from the location json        
-        const currentLongitude =
-          JSON.stringify(position.coords.longitude);
-
-        //getting the Latitude from the location json
-        const currentLatitude = 
-          JSON.stringify(position.coords.latitude);
-
-        //Setting Longitude state
-        setCurrentLongitude(currentLongitude);
-
-        //Setting Latitude state
-        setCurrentLatitude(currentLatitude);
-      },
-      (error) => {
-        setLocationStatus(error.message);
-      },
-      {
-        enableHighAccuracy: false,
-        maximumAge: 1000
-      },
-    );
-  };*/
 
   return (
     <View style={styles.container}>

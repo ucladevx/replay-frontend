@@ -26,8 +26,6 @@ const getUserLocationData = async () => {
     return "INVALID";
   }
 
-  //fetch location data
-  //let location = await Location.getCurrentPositionAsync({});
   let location = await Location.watchPositionAsync({
     accuracy:Location.Accuracy.High,
     timeInterval:10000,
