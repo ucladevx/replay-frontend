@@ -2,36 +2,38 @@ import React, { useState, useEffect } from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { getUserLocationData } from '../helpers/location';
+import * as Location from 'expo-location';
 
 export default function Home() {
-  //UCLA location
   const [pin, setPin] = useState ({
     latitude: 34.0689,
     longitude: -118.4452
   })
 
   const [ currentLongitude, setCurrentLongitude ] = useState(34.0689);
-  const [ currentLatitude, setCurrentLatitude ] = useState(-118.4452);
+  const [ currentLatitude, setCurrentLatitude ] = useState(118.4452);
 
-  //upon mount, declare an interval that fetches and 
-  //updates user location every 5 minutes
   useEffect(() => {
-    const setUserCoords = async () => {
-      let location = await getUserLocationData();
-      if (location !== "INVALID") {
-        setCurrentLatitude(location.coords.latitude);
-        setCurrentLongitude(location.coords.longitude);
-        console.log("User location successfully updated!")
-        console.log("Longitude: " + location.coords.longitude);
-        console.log("Lagitude: " + location.coords.latitude);
+    (async () => {
+      //check if user has granted location permissions
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        alert('Location permission denied! Allow location permissions in settings.')
+        return "INVALID";
       }
-    };
 
-    setUserCoords();
-    const interval = setInterval(() => {
-      setUserCoords();
-    }, 300000);
-    return () => clearInterval(interval);
+      let location = await Location.watchPositionAsync({
+        accuracy:Location.Accuracy.High,
+        timeInterval:10000,
+        distanceInterval: 80,
+      },
+      location => {
+        console.log('update location!', location.coords.latitude, location.coords.longitude)
+        setCurrentLatitude(location.coords.latitude)
+        setCurrentLongitude(location.coords.longitude);
+      }
+      )
+    })();
   }, []);
 
   return (
@@ -46,13 +48,23 @@ export default function Home() {
         }}
       >
         <Marker 
-          coordinate={{
+          coordinate= {{
             latitude: currentLatitude,
             longitude: currentLongitude}}
           pinColor="blue"
+          draggable={true}
+          onDragStart={(e) => {
+            console.log("Drag start", e.nativeEvent.coordinate)
+          }}
+          onDragEnd={(e) => {
+            setPin({
+              latitude: e.nativeEvent.coordinate.latitude,
+              longitude: e.nativeEvent.coordinate.longitude
+            })
+          }}
         >
           <Callout>
-            <Text>My Location</Text>
+            <Text>I'm here</Text>
           </Callout>
         </Marker>
       </MapView>
