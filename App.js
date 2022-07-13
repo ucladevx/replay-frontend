@@ -6,7 +6,7 @@ import PlatformConnect from './screens/PlatformConnect';
 import Signup from './screens/Signup'; 
 import Landing from './screens/Landing';
 import Profile from './screens/Profile';
-import { View, Text } from 'react-native';
+import IconInfo from './components/IconInfo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -14,8 +14,10 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <IconInfo/>
+    // TODO: Uncomment before merging to dev, IconInfo is just displayed for testing purposes
     //<Home />
-    <NavigationContainer>
+    /*<NavigationContainer>
       <Stack.Navigator initialRouteName="Landing">
         <Stack.Screen 
           name="Landing" 
@@ -43,7 +45,7 @@ export default function App() {
           options={{headerShown: false}}
         />
       </Stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer>*/
   );
 }
 
