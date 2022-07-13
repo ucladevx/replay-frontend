@@ -1,0 +1,69 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.17/libexec/bin/yarn.js install
+
+PATH: 
+  /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/opt/homebrew/sbin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  12.16.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/liahkim/Documents/GitHub/replay-frontend/package.json: Unexpected string in JSON at position 852
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.22.17/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.22.17/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.22.17/libexec/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "replay-frontend",
+    "version": "1.0.0",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "@react-navigation/native": "^6.0.8",
+      "@react-navigation/native-stack": "^6.5.0",
+      "add": "^2.0.6",
+      "expo": "~43.0.0",
+      "expo-app-loading": "~1.2.1",
+      "expo-checkbox": "~2.0.0",
+      "expo-font": "~10.0.3",
+      "expo-location": "~13.0.4",
+      "expo-status-bar": "~1.1.0",
+      "react": "17.0.1",
+      "react-dom": "17.0.1",
+      "react-native": "0.64.2",
+      "react-native-maps": "^0.29.4",
+      "react-native-web": "0.17.1",
+      "expo-font": "~10.0.3",
+      "expo-app-loading": "~1.2.1",
+      "expo-checkbox": "~2.0.0",
+      "yarn": "^1.22.17"
+      "yarn": "^1.22.17",
+      "react-native-screens": "~3.8.0",
+      "react-native-safe-area-context": "3.3.2"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.12.9"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
